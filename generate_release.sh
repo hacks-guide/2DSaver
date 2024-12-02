@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -e
+
+TOPDIR=$PWD
+RELEASEDIR=$TOPDIR/`basename $PWD`
+
+make
+
+mkdir $RELEASEDIR
+cp 2DSaver.3dsx $RELEASEDIR/boot.3dsx
+
+# CHN
+mkdir $RELEASEDIR/CHN
+cp config.ini $RELEASEDIR/CHN
+sed -i "s|000400000d921e00|0004001000026000|g" $RELEASEDIR/CHN/config.ini
+
+# EUR
+mkdir $RELEASEDIR/EUR
+cp config.ini $RELEASEDIR/EUR
+sed -i "s|000400000d921e00|0004001000022000|g" $RELEASEDIR/EUR/config.ini
+
+# JPN
+mkdir $RELEASEDIR/JPN
+cp config.ini $RELEASEDIR/JPN
+sed -i "s|000400000d921e00|0004001000020000|g" $RELEASEDIR/JPN/config.ini
+
+# KOR
+mkdir $RELEASEDIR/KOR
+cp config.ini $RELEASEDIR/KOR
+sed -i "s|000400000d921e00|0004001000027000|g" $RELEASEDIR/KOR/config.ini
+
+# TWN
+mkdir $RELEASEDIR/TWN
+cp config.ini $RELEASEDIR/TWN
+sed -i "s|000400000d921e00|0004001000028000|g" $RELEASEDIR/TWN/config.ini
+
+# USA
+mkdir $RELEASEDIR/USA
+cp config.ini $RELEASEDIR/USA
+sed -i "s|000400000d921e00|0004001000021000|g" $RELEASEDIR/USA/config.ini
+
+cd $RELEASEDIR && zip -r $PWD.zip * && cd $TOPDIR

@@ -1,4 +1,6 @@
 build
+2DSaver
 *.3dsx
 *.elf
 *.smdh
+*.zip
