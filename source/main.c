@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <3ds.h>
-u8 cfgData[4]={0};
+
+CTR_ALIGN(4) u8 cfgData[4]={0};
+
 void fixConfig(){
 	Result res=0;
 	res = CFG_GetConfigInfoBlk4(4, 0x00110000, cfgData);
